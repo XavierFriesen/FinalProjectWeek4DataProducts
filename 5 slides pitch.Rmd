@@ -1,0 +1,35 @@
+---
+title: "Pitching a Novel Way to Calculate Chicken Weight"
+author: "Xavier"
+date: "2023-09-09"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## What do we need to know? 
+- The age of the chicken
+- The specific diet of the chicken
+
+## What will the app tell you?
+
+1. The expected weight of the chicken
+2. The expected growth trajectory in the next few days 
+
+## An Example of the Output, for Chicken with Diet 1
+```{r , echo = F, message=FALSE, warning=FALSE}
+    library(dplyr)
+    library(datasets)
+
+    model1 <- lm(weight ~ Time, data = subset(ChickWeight, Diet == 1))
+    plot(weight ~ Time, data = subset(ChickWeight, Diet == 1),
+                 xlab = "Age of Chicken in Days", 
+                 ylab = "Expected Weight", bty = "n", pch = 16,
+                 xlim = c(0, 22))
+            abline(model1, col = "red", lwd = 2)
+```
+
+## Why should we care? 
+Because using this app you can easily evaluate of your chicken are performing better or worse than average, and make adjustments accordingly! 
